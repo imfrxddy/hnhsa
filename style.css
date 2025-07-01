@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fdf6f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inicio, .contenido {
+  position: absolute;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+}
+
+.inicio h1 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #d66ba0;
+}
+
+button {
+  background-color: #ffe9f3;
+  color: #d66ba0;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background-color: #ffd6eb;
+  transform: scale(1.05);
+}
+
+.contenido {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.mensajes {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.decoracion {
+  width: 120px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.mensaje {
+  background-color: #ffe0ec;
+  color: #4a3c3c;
+  padding: 12px 16px;
+  border-radius: 18px;
+  margin: 12px 0;
+  text-align: left;
+  animation: aparecer 0.5s ease forwards;
+  opacity: 0;
+  font-size: 1em;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.corazones-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.corazon {
+  position: absolute;
+  color: pink;
+  font-size: 20px;
+  animation: flotar 5s linear infinite;
+  opacity: 0;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
