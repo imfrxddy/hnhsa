@@ -55,28 +55,42 @@ button:hover {
   display: none;
   justify-content: center;
   align-items: center;
-  /* sin height: 100vh para que no ocupe toda la pantalla */
-  min-height: 300px; /* ejemplo para dar espacio vertical */
-  padding: 10px;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .mensajes {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   padding: 20px;
   width: 90vw;
-  max-width: 400px;   /* tamaño más pequeño para móviles */
-  height: 350px;      /* tamaño fijo en altura */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  max-width: 400px;
+  height: 380px; /* Tamaño fijo para que se vea en móviles */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+.decoracion {
+  width: 100px;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.decoracion {
-  width: 120px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.scrollable {
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 5px;
 }
 
 .mensaje {
@@ -84,12 +98,12 @@ button:hover {
   color: #4a3c3c;
   padding: 12px 16px;
   border-radius: 18px;
-  margin: 12px 0;
+  margin: 8px 0;
   text-align: left;
   animation: aparecer 0.5s ease forwards;
   opacity: 0;
   font-size: 1em;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes aparecer {
@@ -120,11 +134,6 @@ button:hover {
   100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
 }
 
-.scrollable {
-  overflow-y: auto;
-  max-height: calc(350px - 140px); /* altura de caja menos espacio para imagen */
-  -webkit-overflow-scrolling: touch;
-}
 
 </style>
   
