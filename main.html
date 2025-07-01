@@ -4,8 +4,119 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para ti 🌷</title>
-  <link rel="stylesheet" href="style.css">
+ 
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+   <style>
+     body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fdf6f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inicio, .contenido {
+  position: absolute;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+}
+
+.inicio h1 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #d66ba0;
+}
+
+button {
+  background-color: #ffe9f3;
+  color: #d66ba0;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background-color: #ffd6eb;
+  transform: scale(1.05);
+}
+
+.contenido {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.mensajes {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.decoracion {
+  width: 120px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.mensaje {
+  background-color: #ffe0ec;
+  color: #4a3c3c;
+  padding: 12px 16px;
+  border-radius: 18px;
+  margin: 12px 0;
+  text-align: left;
+  animation: aparecer 0.5s ease forwards;
+  opacity: 0;
+  font-size: 1em;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.corazones-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.corazon {
+  position: absolute;
+  color: pink;
+  font-size: 20px;
+  animation: flotar 5s linear infinite;
+  opacity: 0;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+</style>
+  
 </head>
 <body>
 
@@ -28,6 +139,63 @@
 
   <div class="corazones-container" id="corazones"></div>
 
-  <script src="script.js"></script>
+  <script>
+  const empezarBtn = document.getElementById('empezar-btn');
+const pantallaInicio = document.getElementById('pantalla-inicio');
+const pantallaMensajes = document.getElementById('pantalla-mensajes');
+const mensajesDiv = document.getElementById('mensajes');
+const musica = document.getElementById('musica');
+const corazonesContainer = document.getElementById('corazones');
+
+// Mensajes personalizados ❤️
+const mensajes = [
+  "Hola, mi amor 💖",
+  "Sé que hoy estás triste... y eso me parte el alma 💔",
+  "Solo quiero recordarte que eres una persona increíble ✨",
+  "Estoy aquí para ti, siempre 🫂",
+  "Mereces toda la felicidad del mundo 🌎",
+  "Gracias por existir 🌸",
+  "Espero que esta pequeña sorpresa te saque una sonrisa 😊",
+  "Te amo, con todo mi corazón ❤️"
+];
+
+function mostrarMensajes() {
+  let i = 0;
+  const intervalo = setInterval(() => {
+    if (i >= mensajes.length) {
+      clearInterval(intervalo);
+      return;
+    }
+    const msg = document.createElement('div');
+    msg.classList.add('mensaje');
+    msg.textContent = mensajes[i];
+    mensajesDiv.appendChild(msg);
+    mensajesDiv.scrollTop = mensajesDiv.scrollHeight;
+    i++;
+  }, 2000); // cada 2 segundos
+}
+
+function lanzarCorazones() {
+  setInterval(() => {
+    const corazon = document.createElement('div');
+    corazon.classList.add('corazon');
+    corazon.textContent = '💗';
+    corazon.style.left = `${Math.random() * 100}%`;
+    corazon.style.fontSize = `${20 + Math.random() * 20}px`;
+    corazonesContainer.appendChild(corazon);
+    setTimeout(() => corazon.remove(), 5000);
+  }, 300);
+}
+
+empezarBtn.addEventListener('click', () => {
+  pantallaInicio.style.display = 'none';
+  pantallaMensajes.style.display = 'flex';
+  musica.play();
+  mostrarMensajes();
+  lanzarCorazones();
+});
+
+    
+  </script>
 </body>
 </html>
