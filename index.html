@@ -55,17 +55,21 @@ button:hover {
   display: none;
   justify-content: center;
   align-items: center;
+  /* sin height: 100vh para que no ocupe toda la pantalla */
+  min-height: 300px; /* ejemplo para dar espacio vertical */
+  padding: 10px;
 }
 
 .mensajes {
+  display: flex;
+  flex-direction: column;
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   padding: 20px;
-  width: 100%;
-  max-height: 70vh;
-  overflow-y: auto;
+  width: 90vw;
+  max-width: 400px;   /* tamaño más pequeño para móviles */
+  height: 350px;      /* tamaño fijo en altura */
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  position: relative;
 }
 
 .decoracion {
@@ -115,6 +119,13 @@ button:hover {
   0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
   100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
 }
+
+.scrollable {
+  overflow-y: auto;
+  max-height: calc(350px - 140px); /* altura de caja menos espacio para imagen */
+  -webkit-overflow-scrolling: touch;
+}
+
 </style>
   
 </head>
