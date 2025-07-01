@@ -70,10 +70,12 @@ button:hover {
   padding: 20px;
   width: 90vw;
   max-width: 400px;
-  height: 380px; /* Tamaño fijo para que se vea en móviles */
+  height: 380px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+  overflow: hidden; /* importante para contener scroll */
 }
+
 .decoracion {
   width: 100px;
   height: auto;
@@ -83,6 +85,7 @@ button:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  flex-shrink: 0; /* que no se reduzca nunca */
 }
 
 .scrollable {
@@ -146,7 +149,7 @@ button:hover {
   </div>
 
   <div class="contenido" id="pantalla-mensajes">
-    <div class="mensajes">
+    <div id="mensajes" class="scrollable"></div>
       <img src="gatitos.jpg" alt="Decoración linda" class="decoracion" />
       <div id="mensajes"></div>
     </div>
